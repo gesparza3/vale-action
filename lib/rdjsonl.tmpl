@@ -23,9 +23,11 @@
 {{- $col := printf "%d" (index .Span 0) -}}
 {{- $check := printf "%s" .Check -}}
 {{- $message := printf "%s" .Message -}}
+{{- $match := printf "%s" .Match -}}
 
 {{- /* Output */ -}}
 
-{"message": "[{{ $check }}] {{ $message | jsonEscape }}", "location": {"path": "{{ $path }}", "range": {"start": {"line": {{ $line }}, "column": {{ $col }}}}}, "severity": "{{ $error }}"}
+{"source":{"name":"vale","url":"https://vale.sh"},"severity":"{{ $error }}","diagnostics":[{"message":"{{ $message }}","location":{"path":"{{ $path }}","range":{"start":{"line":"{{ $line }}","column":"{{ $col }}"}}},"severity":"{{ $error }}","code":{"value":"{{ $check }}","url":"{{ $check }}"}},{"message":"{{ $message }}","location":{"path":"{{ $path }}","range":{"start":{"line":"{{ $line }}","column":"{{ $col }}"},"end":{"line":"{{ $line }}","column":"{{ $col }}"}}},"suggestions":[{"range":{"start":{"line":"{{ $line }}","column":"{{ $col }}"},"end":{"line":"{{ $line }}","column":"{{ $col }}"}},"text":"{{ $match }}"}],"severity":"{{ $error }}"}]}
+
 {{end -}}
 {{end -}}
