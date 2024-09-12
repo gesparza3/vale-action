@@ -20,12 +20,13 @@
 {{- /* Variables setup */ -}}
 
 {{- $line := printf "%d" .Line -}}
-{{- $col := printf "%d" (index .Span 0) -}}
+{{- $start := printf "%d" (index .Span 0) -}}
+{{- $end := printf "%d" (index .Span 1) -}}
 {{- $check := printf "%s" .Check -}}
 {{- $message := printf "%s" .Message -}}
 {{- $match := printf "%s" .Match -}}
 
 {{- /* Output */ -}}
-{"message": "[{{ $check }}] {{ $message | jsonEscape }}", "location": {"path": "{{ $path }}", "range": {"start": {"line": {{ $line }}, "column": {{ $col }}}}}, "suggestions": [{"range": {"start": {"line": {{ $line }}, "column": {{ $col }}}, "end": {"line": {{ $line }}, "column": {{ $col }}}}, "text": "{{ $match }}"}], "severity": "{{ $error }}"}
+{"message": "[{{ $check }}] {{ $message | jsonEscape }}", "location": {"path": "{{ $path }}", "range": {"start": {"line": {{ $line }}, "column": {{ $start }}}}}, "suggestions": [{"range": {"start": {"line": {{ $line }}, "column": {{ $start }}}, "end": {"line": {{ $line }}, "column": {{ $end }}}}, "text": "{{ $match }}"}], "severity": "{{ $error }}"}
 {{end -}}
 {{end -}}
