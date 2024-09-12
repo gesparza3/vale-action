@@ -26,9 +26,6 @@
 {{- $match := printf "%s" .Match -}}
 
 {{- /* Output */ -}}
-
-{"message": "[{{ $check }}] {{ $message | jsonEscape }}", "location": {"path": "{{ $path }}", "range": {"start": {"line": {{ $line }}, "column": {{ $col }}}}},"suggestions": [{"range": {"start": {"line": {{ $line }}, "column": {{ $col }}}, "end": {"line": {{ $line }}, "column": {{ $col }}}}, "text": "{{ $match }}"}], "severity": "{{ $error }}"}
-
-
+{"message": "[{{ $check }}] {{ $message | jsonEscape }}", "location": {"path": "{{ $path }}", "range": {"start": {"line": {{ $line }}, "column": {{ $col }}}}}, "suggestions": [{"range": {"start": {"line": {{ $line }}, "column": {{ $col }}}, "end": {"line": {{ $line }}, "column": {{ $col }}}}, "text": "{{ $match }}"}], "severity": "{{ $error }}"}
 {{end -}}
 {{end -}}
