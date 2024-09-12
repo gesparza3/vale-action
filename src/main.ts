@@ -44,7 +44,7 @@ export async function run(actionInput: input.Input): Promise<void> {
         return await exec.exec(
           actionInput.reviewdogPath,
           [
-            '-f=rdjsonl',
+            '-f=rdjson',
             `-name=vale`,
             `-reporter=${core.getInput('reporter')}`,
             `-fail-on-error=${should_fail}`,
